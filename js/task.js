@@ -1,62 +1,55 @@
 "use strict";
 
-import items from "gallery-items.js";
+import items from "../gallery-items.js";
+// Массив обьектов
 
-const galleryListRef = document.querySelector("js-gallery");
+const galleryListRef = document.querySelector(".js-gallery");
+
+// Перебор массива  forEach и создание галерееи.
+const createGallery = items.forEach((item) => {
+  const galleryItemRef = document.createElement("li");
+  galleryItemRef.classList.add("gallery__item");
+
+  const galleryLinkRef = document.createElement("a");
+  galleryLinkRef.classList.add("gallery__link");
+  galleryLinkRef.setAttribute("href", item.original);
+
+  const galleryImgRef = document.createElement("img");
+  galleryImgRef.classList.add("gallery__image");
+  galleryImgRef.setAttribute("src", item.preview);
+  galleryImgRef.setAttribute("data-source", item.original);
+  galleryImgRef.setAttribute("alt", item.description);
+
+  galleryListRef.append(galleryItemRef);
+  galleryItemRef.append(galleryLinkRef);
+  galleryLinkRef.append(galleryImgRef);
+});
+
 console.log(galleryListRef);
-// посмотреть ссылку на ul основного списка
+// проверила галярею
 
-// создаю лишку
-const galleryItemRef = document.createElement("li");
-console.log(galleryItemRef);
-// посмотреть ссылку на лишку
-galleryItemRef.classList.add("gallery__item");
-// добавила класс лишке
+// const galleryListRef = document.querySelector(".js-gallery");
 
-// создаю а
-const galleryLinkRef = document.createElement("a");
-console.log(galleryLinkRef);
-// посмотреть на ссылку на а
-galleryLinkRef.classList.add("gallery__link");
-// добавила класс для а
-galleryLinkRef.setAttribute("href", items.original);
-// ПРОВЕРИТЬ добавился ли атрибут href и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
+// const galleryItemRef = document.createElement("li");
+// galleryItemRef.classList.add("gallery__item");
 
-// создаю img
-const galleryImgRef = document.createElement("img");
-console.log(galleryImgRef);
-// добавляю класс для img
-galleryImgRef.classList.add("gallery__image");
-console.log(galleryImgRef);
-galleryImgRef.setAttribute("src", items.preview);
-// ПРОВЕРИТЬ добавился ли атрибут src и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
-galleryImgRef.setAttribute("data-source", items.original);
-// ПРОВЕРИТЬ добавился ли атрибут data-source и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
-galleryImgRef.setAttribute("alt", items.description);
-// ПРОВЕРИТЬ добавился ли атрибут alt и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
+// const galleryLinkRef = document.createElement("a");
+// galleryLinkRef.classList.add("gallery__link");
+// galleryLinkRef.setAttribute("href", items.original);
+// // ПРОВЕРИТЬ добавился ли атрибут href и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// на ul вешаю li
-galleryListRef.append(galleryItemRef);
-// на li вешаю а
-galleryItemRef.append(galleryLinkRef);
-// на a вешаю img
-galleryLinkRef.append(galleryImgRef);
+// const galleryImgRef = document.createElement("img");
+// galleryImgRef.classList.add("gallery__image");
+// galleryImgRef.setAttribute("src", items.preview);
+// // ПРОВЕРИТЬ добавился ли атрибут src и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
+// galleryImgRef.setAttribute("data-source", items.original);
+// // ПРОВЕРИТЬ добавился ли атрибут data-source и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
+// galleryImgRef.setAttribute("alt", items.description);
+// // ПРОВЕРИТЬ добавился ли атрибут alt и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// ПРОВЕРИТЬ!!!!
-console.log(galleryListRef);
+// galleryListRef.append(galleryItemRef);
+// galleryItemRef.append(galleryLinkRef);
+// galleryLinkRef.append(galleryImgRef);
 
-
-// ШАБЛОН
-{/* <li class="gallery__item">
-  <a
-    class="gallery__link"
-    href="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg"
-  >
-    <img
-      class="gallery__image"
-      src="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546__340.jpg"
-      data-source="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg"
-      alt="Tulips"
-    />
-  </a>
-</li>; */}
+// // ПРОВЕРИТЬ!!!!
+// console.log(galleryListRef);
