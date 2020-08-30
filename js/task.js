@@ -25,9 +25,6 @@ const createGallery = items.forEach((item) => {
   galleryLinkRef.append(galleryImgRef);
 });
 
-console.log(galleryListRef);
-// проверила галярею: Работает!
-
 // функция клика на изображение, вынесла отдельно.Для реализации делегирования
 const onImgClick = function (event) {
   // убрала дефолтный переход по ссылке при клике на изображение
@@ -45,3 +42,11 @@ const onImgClick = function (event) {
 
 // реализация делегирования события клика на img
 galleryListRef.addEventListener("click", onImgClick);
+
+// Открытие модального окна при клике на изображение
+// querySelector находит только первое изображение
+// модальное окно не открывается, не могу понять на что вешать класс is-open
+const openModal = document.querySelector("li.gallery__item");
+openModal.addEventListener("click", () => {
+  document.body.classList.add("is-open");
+});
