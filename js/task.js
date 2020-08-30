@@ -26,30 +26,22 @@ const createGallery = items.forEach((item) => {
 });
 
 console.log(galleryListRef);
-// проверила галярею
+// проверила галярею: Работает!
 
-// const galleryListRef = document.querySelector(".js-gallery");
+// функция клика на изображение, вынесла отдельно.Для реализации делегирования
+const onImgClick = function (event) {
+  // убрала дефолтный переход по ссылке при клике на изображение
+  event.preventDefault();
 
-// const galleryItemRef = document.createElement("li");
-// galleryItemRef.classList.add("gallery__item");
+  // Проверка клика ИМЕННО по изображению
+  if (event.target.nodeName !== "IMG") {
+    console.log("Не нажали на картинку!");
+    return;
+  }
 
-// const galleryLinkRef = document.createElement("a");
-// galleryLinkRef.classList.add("gallery__link");
-// galleryLinkRef.setAttribute("href", items.original);
-// // ПРОВЕРИТЬ добавился ли атрибут href и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // получение URL большого изображения, вывод в консоль
+  console.dir(event.target.dataset.source);
+};
 
-// const galleryImgRef = document.createElement("img");
-// galleryImgRef.classList.add("gallery__image");
-// galleryImgRef.setAttribute("src", items.preview);
-// // ПРОВЕРИТЬ добавился ли атрибут src и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
-// galleryImgRef.setAttribute("data-source", items.original);
-// // ПРОВЕРИТЬ добавился ли атрибут data-source и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
-// galleryImgRef.setAttribute("alt", items.description);
-// // ПРОВЕРИТЬ добавился ли атрибут alt и верна ли ссылка!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-// galleryListRef.append(galleryItemRef);
-// galleryItemRef.append(galleryLinkRef);
-// galleryLinkRef.append(galleryImgRef);
-
-// // ПРОВЕРИТЬ!!!!
-// console.log(galleryListRef);
+// реализация делегирования события клика на img
+galleryListRef.addEventListener("click", onImgClick);
