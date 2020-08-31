@@ -38,6 +38,10 @@ const onImgClick = function (event) {
 
   // получение URL большого изображения, вывод в консоль
   console.dir(event.target.dataset.source);
+
+  // Подмена значения атрибута src элемента img.lightbox__image.
+  const lightboxImgRef = document.querySelector(".lightbox__image");
+  console.log((lightboxImgRef.getAttribute = event.target.dataset.source));
 };
 
 // реализация делегирования события клика на img
@@ -46,8 +50,8 @@ galleryListRef.addEventListener("click", onImgClick);
 // Открытие модального окна при клике на изображение
 const openModal = document.querySelector("div.lightbox");
 
-const galleryItemRef = document.querySelectorAll(".gallery__item");
-galleryItemRef.forEach((galleryItem) => {
+const galleryItemRefs = document.querySelectorAll(".gallery__item");
+galleryItemRefs.forEach((galleryItem) => {
   galleryItem.addEventListener("click", () => {
     openModal.classList.add("is-open");
   });
