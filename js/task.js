@@ -44,9 +44,11 @@ const onImgClick = function (event) {
 galleryListRef.addEventListener("click", onImgClick);
 
 // Открытие модального окна при клике на изображение
-// querySelector находит только первое изображение
-// модальное окно не открывается, не могу понять на что вешать класс is-open
-const openModal = document.querySelector("li.gallery__item");
-openModal.addEventListener("click", () => {
-  document.body.classList.add("is-open");
+const openModal = document.querySelector("div.lightbox");
+
+const galleryItemRef = document.querySelectorAll(".gallery__item");
+galleryItemRef.forEach((galleryItem) => {
+  galleryItem.addEventListener("click", () => {
+    openModal.classList.add("is-open");
+  });
 });
