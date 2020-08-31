@@ -41,7 +41,8 @@ const onImgClick = function (event) {
 
   // Подмена значения атрибута src элемента img.lightbox__image.
   const lightboxImgRef = document.querySelector(".lightbox__image");
-  console.log((lightboxImgRef.getAttribute = event.target.dataset.source));
+  lightboxImgRef.value = event.target.dataset.source;
+  console.log(lightboxImgRef.value);
 };
 
 // реализация делегирования события клика на img
@@ -55,4 +56,15 @@ galleryItemRefs.forEach((galleryItem) => {
   galleryItem.addEventListener("click", () => {
     openModal.classList.add("is-open");
   });
+});
+
+// закрытие модального окна при нажатии на кнопку
+const btnCloseRef = document.querySelector("[data-action]");
+btnCloseRef.addEventListener("click", () => {
+  openModal.classList.remove("is-open");
+
+  // Очистка значения атрибута src элемента img.lightbox__image
+  const lightboxImgRef = document.querySelector(".lightbox__image");
+  lightboxImgRef.value = " ";
+  console.log(lightboxImgRef.value);
 });
