@@ -68,3 +68,11 @@ btnCloseRef.addEventListener("click", () => {
   lightboxImgRef.value = " ";
   console.log(lightboxImgRef.value);
 });
+
+// Закрытие модального окна по клику на div.lightbox__overlay.
+const overlayRef = document.querySelector(".lightbox__overlay");
+overlayRef.addEventListener("click", (event) => {
+  if (event.target === event.currentTarget) {
+    openModal.classList.remove("is-open");
+  }
+});
