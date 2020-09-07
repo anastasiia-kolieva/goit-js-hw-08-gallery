@@ -41,8 +41,7 @@ const onImgClick = function (event) {
 
   // Подмена значения атрибута src элемента img.lightbox__image.
   const lightboxImgRef = document.querySelector(".lightbox__image");
-  lightboxImgRef.value = event.target.dataset.source;
-  console.log(lightboxImgRef.value);
+  lightboxImgRef.src = event.target.dataset.source;
 };
 
 // реализация делегирования события клика на img
@@ -66,7 +65,6 @@ btnCloseRef.addEventListener("click", () => {
   // Очистка значения атрибута src элемента img.lightbox__image
   const lightboxImgRef = document.querySelector(".lightbox__image");
   lightboxImgRef.value = " ";
-  console.log(lightboxImgRef.value);
 });
 
 // Закрытие модального окна по клику на div.lightbox__overlay.
