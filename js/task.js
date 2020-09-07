@@ -52,6 +52,7 @@ const openModal = document.querySelector("div.lightbox");
 
 const galleryItemRefs = document.querySelectorAll(".gallery__item");
 galleryItemRefs.forEach((galleryItem) => {
+  window.addEventListener("keydown", closeOnPressEsc);
   galleryItem.addEventListener("click", () => {
     openModal.classList.add("is-open");
   });
@@ -74,3 +75,10 @@ overlayRef.addEventListener("click", (event) => {
     openModal.classList.remove("is-open");
   }
 });
+
+// Закрытие модального окна по нажатию клавиши ESC.
+function closeOnPressEsc(event) {
+  if (event.code === "Escape") {
+    openModal.classList.remove("is-open");
+  }
+}
